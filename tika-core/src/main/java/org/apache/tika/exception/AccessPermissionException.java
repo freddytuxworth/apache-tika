@@ -37,4 +37,8 @@ public class AccessPermissionException extends TikaException {
     public AccessPermissionException(String info, Throwable th) {
         super(info, th);
     }
+
+    public AccessPermissionException(String info, String secondInfo, Throwable th) {
+        super(info, secondInfo, th);
+    }
 }

@@ -29,4 +29,8 @@ public class TikaException extends Exception {
         super(msg, cause);
     }
 
+    public TikaException(String msg, String subMsg, Throwable cause) {
+        super(msg + "(" + subMsg + ")", cause);
+    }
+
 }
