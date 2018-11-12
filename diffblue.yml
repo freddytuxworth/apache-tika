@@ -1,24 +1,31 @@
 cbmcArguments:
-  depth: false
-  java-external-code-action: 'mock'
+ classpath: '/tools/cbmc/models-simple-overlay.jar:/tools/cbmc/models.jar:.'
+ depth: false
+units:
+  - target:
+    - dir: tika-core/target/classes
+      file: org/apache/tika/parser/PasswordProvider.class
+      sourceDir: src/main/java
+      sourceFile: org/apache/tika/parser/PasswordProvider.java
 phases:
 -
-  timeout: 300
-  cbmcArguments:
-    classpath: '/tools/cbmc/models-simple-overlay.jar:/tools/cbmc/models.jar:.'
-    java-assume-inputs-non-null: true
-    max-nondet-array-length: 10
-    unwind: 1
+ timeout: 300
+ cbmcArguments:
+   java-assume-inputs-non-null: true
+   max-nondet-array-length: 10
+   unwind: 1
 -
-  timeout: 300
-  cbmcArguments:
-    classpath: '/tools/cbmc/models-simple-overlay.jar:/tools/cbmc/models.jar:.'
-    max-nondet-array-length: 20
-    unwind: 2
+ timeout: 300
+ cbmcArguments:
+   java-assume-inputs-non-null: true
+   max-nondet-array-length: 20
+   unwind: 3
 -
-  timeout: 300
-  cbmcArguments:
-    classpath: '/tools/cbmc/models.jar:.'
-    max-nondet-array-length: 30
-    max-nondet-string-length: 10
-    unwind: 3
+ timeout: 300
+ cbmcArguments:
+   java-assume-inputs-non-null: true
+   max-nondet-array-length: 30
+   max-nondet-string-length: 10
+   do-not-test-methods-with-access: [ private ]
+   cover-function-only: false
+   unwind: 5
