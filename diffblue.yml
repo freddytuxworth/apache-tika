@@ -8,12 +8,14 @@ phases:
     classpath: '/tools/cbmc/models-simple-overlay.jar:/tools/cbmc/models.jar:.'
     java-assume-inputs-non-null: true
     max-nondet-array-length: 10
+    java-max-vla-length: 4097
     unwind: 1
 -
   timeout: 300
   cbmcArguments:
     classpath: '/tools/cbmc/models-simple-overlay.jar:/tools/cbmc/models.jar:.'
     max-nondet-array-length: 20
+    java-max-vla-length: 4097
     unwind: 2
 -
   timeout: 300
@@ -21,4 +23,5 @@ phases:
     classpath: '/tools/cbmc/models.jar:.'
     max-nondet-array-length: 30
     max-nondet-string-length: 10
+    java-max-vla-length: 4097
     unwind: 3
