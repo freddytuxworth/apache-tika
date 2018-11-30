@@ -10,6 +10,7 @@ phases:
     max-nondet-array-length: 10
     java-max-vla-length: 4097
     unwind: 1
+    verbosity: 10
 -
   timeout: 300
   cbmcArguments:
@@ -17,6 +18,7 @@ phases:
     max-nondet-array-length: 20
     java-max-vla-length: 4097
     unwind: 2
+    verbosity: 10
 -
   timeout: 300
   cbmcArguments:
@@ -24,4 +26,5 @@ phases:
     max-nondet-array-length: 30
     max-nondet-string-length: 10
     java-max-vla-length: 4097
-    unwind: 3
+    unwind: 2
+    verbosity: 10
