@@ -304,6 +304,13 @@
       <version>1.10.19</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.jacoco</groupId>
+      <artifactId>org.jacoco.agent</artifactId>
+      <version>0.8.2</version>
+      <scope>test</scope>
+      <classifier>runtime</classifier>
+    </dependency>
   </dependencies>
 
   <properties>
@@ -361,8 +368,12 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.0.0-M1</version>
         <configuration>
-          <argLine>${surefire.argLine} -Xmx2048m -Duser.timezone=UTC</argLine>
+          <argLine>-Xmx2048m -Duser.timezone=UTC</argLine>
+          <systemPropertyVariables>
+            <jacoco-agent.destfile>${project.build.directory}/jacoco.exec</jacoco-agent.destfile>
+          </systemPropertyVariables>
           <testFailureIgnore>true</testFailureIgnore>
+          <reuseForks>false</reuseForks>
         </configuration>
       </plugin>
       <plugin>
@@ -388,13 +399,18 @@
         <version>0.8.2</version>
         <executions>
           <execution>
-            <id>prepare-agent</id>
+            <id>instrument</id>
+            <phase>process-test-classes</phase>
             <goals>
-              <goal>prepare-agent</goal>
+              <goal>instrument</goal>
             </goals>
-            <configuration>
-              <propertyName>surefire.argLine</propertyName>
-            </configuration>
+          </execution>
+          <execution>
+            <id>restore-instrumented-classes</id>
+            <phase>test</phase>
+            <goals>
+              <goal>restore-instrumented-classes</goal>
+            </goals>
           </execution>
         </executions>
       </plugin>
