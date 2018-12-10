@@ -25,3 +25,21 @@ phases:
     max-nondet-string-length: 10
     java-max-vla-length: 4097
     unwind: 3
+-
+  timeout: 100
+  cbmcArguments:
+    classpath: '/tools/cbmc/models.jar:.'
+    max-nondet-array-length: 30
+    max-nondet-string-length: 10
+    java-max-vla-length: 4097
+    unwind: 3
+    split-goto-program: 0
+-
+  timeout: 100
+  cbmcArguments:
+    classpath: '/tools/cbmc/models.jar:.'
+    max-nondet-array-length: 30
+    max-nondet-string-length: 10
+    java-max-vla-length: 4097
+    unwind: 3
+    split-goto-program: 1
