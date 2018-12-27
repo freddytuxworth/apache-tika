@@ -1,3 +1,4 @@
+testCmd: ls
 cbmcArguments:
   depth: false
   java-external-code-action: 'mock'
