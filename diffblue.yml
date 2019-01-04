@@ -1,6 +1,12 @@
+testCmd: ls
 cbmcArguments:
   depth: false
   java-external-code-action: 'mock'
+  java-test-input-factory: false
+  java-test-input-factory-bmc-max-mutators: false 
+  java-test-input-factory-bmc-recursion-limit: false
+  java-test-input-factory-entry-point: false
+  java-test-output-entry-point: false
 phases:
 -
   timeout: 300
@@ -17,9 +23,27 @@ phases:
     java-max-vla-length: false
     unwind: 2
 -
-  timeout: 300
+  timeout: 60
   cbmcArguments:
     classpath: '/tools/cbmc/models.jar:.'
     max-nondet-array-length: 100
     java-max-vla-length: false
     unwind: 3
+-
+  timeout: 120
+  cbmcArguments:
+    classpath: '/tools/cbmc/models-simple-overlay.jar:/tools/cbmc/models.jar:.'
+    max-nondet-array-length: 100
+    java-max-vla-length: false
+    unwind: 1
+    throw-runtime-exceptions: false
+    paths: 'fifo'
+-
+  timeout: 120
+  cbmcArguments:
+    classpath: '/tools/cbmc/models-simple-overlay.jar:/tools/cbmc/models.jar:.'
+    max-nondet-array-length: 100
+    java-max-vla-length: false
+    unwind: 2
+    throw-runtime-exceptions: false
+    paths: 'fifo'
