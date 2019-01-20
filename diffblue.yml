@@ -1,7 +1,7 @@
 cbmcArguments:
   depth: false
   java-external-code-action: 'mock'
-  load-containing-class-only: 'true'
+  load-containing-class-only: true
 phases:
 -
   timeout: 300
