@@ -23,4 +23,6 @@ phases:
     classpath: '/tools/cbmc/models.jar:.'
     max-nondet-array-length: 100
     java-max-vla-length: false
+    load-containing-class-only: false
+    single-function-only: true
     unwind: 3
