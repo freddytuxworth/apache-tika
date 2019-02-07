@@ -1,28 +1,116 @@
 cbmcArguments:
   depth: false
   java-external-code-action: 'mock'
-  load-containing-class-only: true
 phases:
 -
-  timeout: 300
+  timeout: 120 #phase 0 (a1)
+  nextPhase:
+    time_out: 3 
   cbmcArguments:
     classpath: '/tools/cbmc/models-simple-overlay.jar:/tools/cbmc/models.jar:.'
     max-nondet-array-length: 100
     java-max-vla-length: false
     unwind: 1
+    max-nondet-string-length: 30,
+    string-printable: true,
+    throw-runtime-exceptions: false
 -
-  timeout: 300
+  timeout: 120 #phase 1 (a2)
+  nextPhase:
+    time_out: 3 
   cbmcArguments:
     classpath: '/tools/cbmc/models-simple-overlay.jar:/tools/cbmc/models.jar:.'
     max-nondet-array-length: 100
     java-max-vla-length: false
+    max-nondet-string-length: 50,
+    throw-runtime-exceptions": false
     unwind: 2
 -
-  timeout: 300
+  timeout: 120 #phase 2 (a3)
+  nextPhase:
+    time_out: 3 
+    successful: 3
+    error: 3
+    crash: 3
+    system_error: 3
+    bad_json: 3
+    not_analyzed: 3
   cbmcArguments:
     classpath: '/tools/cbmc/models.jar:.'
     max-nondet-array-length: 100
     java-max-vla-length: false
-    load-containing-class-only: false
+    unwind: 3
+- 
+  timeout: 120 #phase 3 (b1)
+  nextPhase:
+    time_out: 6
+  cbmcArguments:
+    load-containing-class-only: true
+    classpath: '/tools/cbmc/models-simple-overlay.jar:/tools/cbmc/models.jar:.'
+    max-nondet-array-length: 100
+    java-max-vla-length: false
+    unwind: 1
+    max-nondet-string-length: 30,
+    string-printable: true,
+    throw-runtime-exceptions: false
+-
+  timeout: 120 #phase 4 (b2)
+  nextPhase:
+    time_out: 6
+  cbmcArguments:
+    load-containing-class-only: true
+    classpath: '/tools/cbmc/models-simple-overlay.jar:/tools/cbmc/models.jar:.'
+    max-nondet-array-length: 100
+    java-max-vla-length: false
+    max-nondet-string-length: 50,
+    throw-runtime-exceptions": false
+    unwind: 2
+-
+  timeout: 120 #phase 5 (b3)
+  nextPhase:
+    time_out: 6
+    successful: 6
+    error: 6
+    crash: 6
+    system_error: 6
+    bad_json: 6
+    not_analyzed: 6
+  cbmcArguments:
+    load-containing-class-only: true
+    classpath: '/tools/cbmc/models.jar:.'
+    max-nondet-array-length: 100
+    java-max-vla-length: false
+    unwind: 3
+- 
+  timeout: 120 #phase 6 (c1)
+  nextPhase:
+    time_out: null
+  cbmcArguments:
     single-function-only: true
+    classpath: '/tools/cbmc/models-simple-overlay.jar:/tools/cbmc/models.jar:.'
+    max-nondet-array-length: 100
+    java-max-vla-length: false
+    unwind: 1
+    max-nondet-string-length: 30,
+    string-printable: true,
+    throw-runtime-exceptions: false
+-
+  timeout: 120 #phase 7 (c2)
+  nextPhase:
+    time_out: null
+  cbmcArguments:
+    single-function-only: true
+    classpath: '/tools/cbmc/models-simple-overlay.jar:/tools/cbmc/models.jar:.'
+    max-nondet-array-length: 100
+    java-max-vla-length: false
+    max-nondet-string-length: 50,
+    throw-runtime-exceptions": false
+    unwind: 2
+-
+  timeout: 120 #phase 8 (c3)
+  cbmcArguments:
+    single-function-only: true
+    classpath: '/tools/cbmc/models.jar:.'
+    max-nondet-array-length: 100
+    java-max-vla-length: false
     unwind: 3
