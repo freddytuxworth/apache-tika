@@ -3,7 +3,7 @@ cbmcArguments:
   java-external-code-action: 'mock'
 phases:
 -
-  timeout: 120 #phase 0 (a1)
+  timeout: 60 #phase 0 (a1)
   nextPhase:
     time_out: 3 
   cbmcArguments:
@@ -15,7 +15,7 @@ phases:
     string-printable: true
     throw-runtime-exceptions: false
 -
-  timeout: 120 #phase 1 (a2)
+  timeout: 60 #phase 1 (a2)
   nextPhase:
     time_out: 3 
   cbmcArguments:
@@ -26,7 +26,7 @@ phases:
     throw-runtime-exceptions": false
     unwind: 2
 -
-  timeout: 120 #phase 2 (a3)
+  timeout: 60 #phase 2 (a3)
   nextPhase:
     time_out: 3 
     successful: 3
@@ -41,7 +41,7 @@ phases:
     java-max-vla-length: false
     unwind: 3
 - 
-  timeout: 120 #phase 3 (b1)
+  timeout: 60 #phase 3 (b1)
   nextPhase:
     time_out: 6
   cbmcArguments:
@@ -54,7 +54,7 @@ phases:
     string-printable: true
     throw-runtime-exceptions: false
 -
-  timeout: 120 #phase 4 (b2)
+  timeout: 60 #phase 4 (b2)
   nextPhase:
     time_out: 6
   cbmcArguments:
@@ -66,7 +66,7 @@ phases:
     throw-runtime-exceptions": false
     unwind: 2
 -
-  timeout: 120 #phase 5 (b3)
+  timeout: 60 #phase 5 (b3)
   nextPhase:
     time_out: 6
     successful: 6
@@ -82,7 +82,7 @@ phases:
     java-max-vla-length: false
     unwind: 3
 - 
-  timeout: 120 #phase 6 (c1)
+  timeout: 180 #phase 6 (c1)
   nextPhase:
     time_out: null
   cbmcArguments:
@@ -95,7 +95,7 @@ phases:
     string-printable: true
     throw-runtime-exceptions: false
 -
-  timeout: 120 #phase 7 (c2)
+  timeout: 180 #phase 7 (c2)
   nextPhase:
     time_out: null
   cbmcArguments:
@@ -107,10 +107,23 @@ phases:
     throw-runtime-exceptions": false
     unwind: 2
 -
-  timeout: 120 #phase 8 (c3)
+  timeout: 180 #phase 8 (c3)
+  nextPhase:
+    time_out: null
   cbmcArguments:
     single-function-only: true
     classpath: '/tools/cbmc/models.jar:.'
     max-nondet-array-length: 100
     java-max-vla-length: false
     unwind: 3
+-
+  timeout: 180 #phase 9 (c4)
+  nextPhase:
+    time_out: null
+  cbmcArguments:
+    single-function-only: true
+    classpath: '/tools/cbmc/models.jar:.'
+    max-nondet-array-length: 100
+    java-max-vla-length: false
+    throw-runtime-exceptions": false
+    unwind: 4
